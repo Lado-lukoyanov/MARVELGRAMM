@@ -44,7 +44,7 @@ class MarvelViewController: UIViewController {
 
 // MARK: - SetupView
     private func setupView(){
-        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.1516073942, green: 0.1516073942, blue: 0.1516073942, alpha: 1)
         view.addSubview(heroesCollectionView)
         setConstraint()
         heroesCollectionView.register(HeroCollectionCell.self, forCellWithReuseIdentifier: idColletionView)
@@ -54,17 +54,13 @@ class MarvelViewController: UIViewController {
         searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
         navigationItem.searchController?.hidesNavigationBarDuringPresentation = false
-        navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.tintColor = .white
-       
         navigationItem.backButtonTitle = ""
-        
         navigationItem.titleView = createCustomTitleView()
         navigationItem.hidesSearchBarWhenScrolling = false
         
         if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.standardAppearance.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            navigationController?.navigationBar.scrollEdgeAppearance?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            navigationController?.navigationBar.standardAppearance.backgroundColor = #colorLiteral(red: 0.1516073942, green: 0.1516073942, blue: 0.1516073942, alpha: 1)
+            navigationController?.navigationBar.scrollEdgeAppearance?.backgroundColor = #colorLiteral(red: 0.1516073942, green: 0.1516073942, blue: 0.1516073942, alpha: 1)
         }
     }
     
@@ -166,17 +162,14 @@ extension MarvelViewController: UISearchResultsUpdating {
         for (value, hero) in heroesArray.enumerated() {
             let indexPath: IndexPath = [0, value]
             let cell = heroesCollectionView.cellForItem(at: indexPath)
-            
             if hero.name.lowercased().contains(searchText.lowercased()){
                 filtredArray.append(indexPath)
                 cell?.alpha = 1
             } else {
                 cell?.alpha = 0.3
             }
-            
         }
     }
-    
 }
 
 extension MarvelViewController: UICollectionViewDelegateFlowLayout {
